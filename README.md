@@ -116,6 +116,13 @@ As rotas e os parametro direto para as atividades são:
     GET ira retornar a pagina para preenchermos os valores
     POST para enviar os dados e retornar com o resultado
 
+## Observação Importante
+
+Se for testar diretamente pelo POSTMAN, INSOMNIA ou outra ferramente do tipo, precisamos acrescentar uma variavel no header do POST, com a seguinte ``KEY``: `X-CSRFToken` e para pegar o ``VALUE`` dessa KEY, podemos antes de fazer o post fazer um GET na url e pegarmos o valor q ira retornar no ``cookie``, que ai sim conseguiremos realizer um POST para o nosso projeto, exemplo de como deve ficar a nova variavel no header:
+
+```sh
+    X-CSRFToken : nhXGkAY93i3EUo8MaGOwbCukg6xWydrk
+```
 
 ## Apresentação
- Fiz um pequeno video e postei no youtube, para apresentar o projeto com as atividades, na tentativa de facilitar a vida de quem for havaliar o projeto. 'irei colocar o link aqui'
+ Fiz um pequeno video e postei no youtube, para apresentar o projeto com as atividades, na tentativa de facilitar a vida de quem for havaliar o projeto. https://youtu.be/ndSGujUT4Ek
