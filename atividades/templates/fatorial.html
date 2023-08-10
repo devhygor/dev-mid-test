@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Fatorial</h2>
+    <p>
+        O fatorial de um número inteiro positivo é o produto de todos os números inteiros positivos menores ou iguais a ele.
+        Por exemplo, o fatorial de 5 (indicado por 5!) é calculado da seguinte forma:
+        5! = 5 × 4 × 3 × 2 × 1 = 120.
+        O conceito de fatorial é frequentemente usado em matemática e programação para resolver uma variedade de problemas.
+    </p>
+    <form method="post" action="{% url 'fatorial' %}">
+        {% csrf_token %}
+        <label for="numero">Digite um número inteiro:</label>
+        <input type="number" name="numero" required>
+        <br>
+        <input type="submit" value="Calcular">
+    </form>
+
+    {% if resultado %}
+        <h4>O fatorial de {{ numero }} é: {{ resultado }}</h4>
+    {% endif %}
+{% endblock %}

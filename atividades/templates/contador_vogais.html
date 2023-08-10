@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Contador de Vogais</h2>
+    <p>Irá quantas vogais (a, e, i, o, u) tem na frase</p>
+    <form method="post" action="{% url 'contador_vogais' %}">
+        {% csrf_token %}
+        <label for="frase">Digite uma frase:</label>
+        <input type="text" name="frase" required>
+        <br>
+        <input type="submit" value="Contar Vogais">
+    </form>
+
+    {% if num_vogais %}
+        <h4>A frase possui {{ num_vogais }} vogais.</h4>
+    {% endif %}
+{% endblock %}

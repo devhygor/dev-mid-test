@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Palíndromo</h2>
+    <p>
+        Um palíndromo é uma sequência de caracteres que se lê da mesma forma tanto da esquerda para a direita quanto da direita para a esquerda.
+        Por exemplo, a palavra "radar" é um palíndromo, pois pode ser lida da mesma maneira nos dois sentidos.
+        No entanto, a palavra "casa" não é um palíndromo, pois não é idêntica quando lida ao contrário.
+        Palíndromos são frequentemente explorados em linguagem, matemática e até mesmo em jogos de palavras.
+      </p>
+    <form method="post" action="{% url 'palindromo' %}">
+        {% csrf_token %}
+        <label for="palavra">Digite uma palavra:</label>
+        <input type="text" name="palavra" required>
+        <br>
+        <input type="submit" value="Verificar">
+    </form>
+
+    {% if resultado is not None %}
+        {% if resultado %}
+            <h4>A palavra é um palíndromo!</h4>
+        {% else %}
+            <h4>A palavra não é um palíndromo.</h4>
+        {% endif %}
+    {% endif %}
+{% endblock %}

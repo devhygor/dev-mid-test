@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <h2>Tabela de Multiplicação</h2>
+    <p>
+        Cria uma tabuada de 1 a 10 do número escolhido
+    <p>
+    <form method="post" action="{% url 'tabela' %}">
+        {% csrf_token %}
+        <label for="numero">Digite um número:</label>
+        <input type="number" name="numero" required>
+        <br>
+        <input type="submit" value="Gerar Tabela">
+    </form>
+
+    {% if tabela %}
+        <h3>Tabela do Número {{ numero }}</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Multiplicador</th>
+                    <th>Multiplicando</th>
+                    <th>Resultado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for multiplicador, multiplicando, resultado in tabela %}
+                    <tr>
+                        <td>{{ multiplicando }}</td>
+                        <td>{{ multiplicador }}</td>
+                        <td>{{ resultado }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static '../static/css/tabela.css' %}">
+{% endblock %}

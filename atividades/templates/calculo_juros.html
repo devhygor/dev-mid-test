@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Cálculo de Juros</h2>
+    <form method="post" action="{% url 'calculo_juros' %}">
+        {% csrf_token %}
+        <label for="capital_inicial">Digite o capital inicial:</label>
+        <input type="number" name="capital_inicial" step="0.01" required>
+        <br>
+        <label for="taxa_juros">Digite a taxa de juros (em decimal):</label>
+        <input type="number" name="taxa_juros" step="0.0001" required>
+        <br>
+        <label for="tempo_meses">Digite o tempo de investimento (em meses):</label>
+        <input type="number" name="tempo_meses" step="1" required>
+        <br>
+        <input type="submit" value="Calcular">
+    </form>
+
+    {% if montante_final is not None %}
+        <h4>Montante Final: R$ {{ montante_final|floatformat:2 }}</h4>
+    {% endif %}
+{% endblock %}

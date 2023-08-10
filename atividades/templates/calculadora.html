@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Calculadora Simples</h2>
+    <form method="post" action="{% url 'calculadora' %}">
+        {% csrf_token %}
+        <label for="numero1">Digite o primeiro número:</label>
+        <input type="number" name="numero1" required step="any">
+        <br>
+        <label for="operador">Digite um operador (+, -, *, /):</label>
+        <input type="text" name="operador" required pattern="[-+*/]" title="Use um operador válido (+, -, *, /)">
+        <br>
+        <label for="numero2">Digite o segundo número:</label>
+        <input type="number" name="numero2" required step="any">
+        <br>
+        <input type="submit" value="Calcular">
+    </form>
+
+    {% if error_message %}
+        <h3>Erro:</h3>
+        <p><b>{{ error_message }}<b></p>
+    {% endif %}
+
+    {% if resultado  %}
+        <h3>Resultado:</h3>
+        <p><b>{{ operacao }} = {{ resultado }}</b></p>
+    {% endif %}
+{% endblock %}

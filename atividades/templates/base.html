@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades</title>
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <header>
+        <h1>Atividades</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'calculadora' %}">Calculadora</a></li>
+                <li><a href="{% url 'numeros_primos' %}">Números Primos</a></li>
+                <li><a href="{% url 'fatorial' %}">Fatorial</a></li>
+                <li><a href="{% url 'palindromo' %}">Palíndromo</a></li>
+                <li><a href="{% url 'tabela' %}">Tabela</a></li>
+                <li><a href="{% url 'contador_vogais' %}">Contador de Vogais</a></li>
+                <li><a href="{% url 'media_notas' %}">Média de Notas</a></li>
+                <li><a href="{% url 'calculo_juros' %}">Cálculo de Juros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p><i>Desenvolvido por Hygor Melo Rocha</i></p>
+    </footer>
+</body>
+</html>

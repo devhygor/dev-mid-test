@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Números Primos</h2>
+    <p>
+        Um número primo é um número inteiro maior que 1 que possui apenas dois divisores positivos: 1 e ele mesmo.
+        Por exemplo, o número 7 é primo, pois seus únicos divisores são 1 e 7. No entanto, o número 9 não é primo,
+        pois é divisível por 1, 3 e 9.
+        Os números primos desempenham um papel importante em matemática e têm várias aplicações em algoritmos e criptografia.
+      </p>
+    <form method="post" action="{% url 'numeros_primos' %}">
+        {% csrf_token %}
+        <p>Irá verificar se o número é um número primo e mostrara quais são os 10 próximos NÚMEROS PRIMOS após o número digitado</p>
+        <label for="numero_inicio">Digite o número de início:</label>
+        <input type="number" name="numero_inicio" required>
+        <br>
+        <input type="submit" value="Obter Primos">
+    </form>
+
+    {% if is_numero_primo %}
+        <h3>O número {{ numero_inicio }} é um número primo.</h3>
+    {% else %}
+        <h3>O número {{ numero_inicio }} não é um número primo.</h3>
+    {% endif %}
+
+    {% if numeros_primos %}
+        <h3>Os proximos 10 Números Primos a partir do número {{ numero_inicio }} são:</h3>
+        <ul>
+            {% for numero_primo in numeros_primos %}
+                <li>{{ numero_primo }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
